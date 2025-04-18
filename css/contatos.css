@@ -1,0 +1,91 @@
+
+section{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.344), rgba(0, 0, 0,013)), url("../img/img3.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; 
+  }
+  section .contatos{
+    width: 100vw;
+    height: 100vh;
+    padding-top: 110px;
+    
+  }
+  section .envio-contato {
+    width: 90vw;
+    height: 80vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    backdrop-filter: blur(25px);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+    margin: auto;
+}
+ section form h3{
+    font-size: 30px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 20px;
+ } 
+ section form{
+    display: flex;
+    flex-direction: column;
+    margin: 10px ;
+    margin-bottom: 30px;
+ }
+ section input{
+    width: 90%;
+    height: 40px;
+    font-size: 16px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
+    outline: none;
+ } 
+ section label{
+    position: relative;
+    letter-spacing: 3px;
+    font-size: 13px;
+    border-radius: 30px;
+    color: white;
+    padding:0px 2px;
+    pointer-events: none;
+    top: 7px;
+    background-color: white;
+    color: black;
+    margin-left: 15px;
+    
+}
+section i{
+    position: relative;
+    right: 45px;
+    font-size: 20px;
+}
+section .input-button{
+    text-align: end;
+    margin-right: 45px;
+}
+section .input-button button{
+    width: 20%;
+    height: 40px;
+    background-color: #ececec;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .5s; 
+    margin: 10px;
+}
+section .input-button button:hover{
+    color: red;
+}
+  
+  

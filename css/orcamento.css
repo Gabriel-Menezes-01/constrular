@@ -1,0 +1,94 @@
+section {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.344), rgba(0, 0, 0,013)), url("../img/img3.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
+section .dados{
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    padding-top: 90px;
+}
+section .dados h2{
+    font-size: 2.5em;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 20px;
+    padding-bottom: 20px;
+
+}
+
+section .inputs{
+    width: 70%;
+    height: 80vh;
+    backdrop-filter: blur(35px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+    
+    margin: auto;
+
+}
+section .info{
+    display: flex; 
+    justify-content: space-around;
+    margin: 10px 0;
+    margin-bottom: 50px;
+}
+section input{
+    width: 25%;
+    height: 30px;
+    font-size: 10px;
+    background-color: transparent;
+    color: white;
+    padding-inline: 20px 50px;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    border-radius: 30px;
+    outline: none;
+}
+section label{
+    letter-spacing: 3px;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+}
+section button{
+    width: 20%;
+    height: 30px;
+    background-color: #ececec;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .5s;
+}
+section button:hover{
+    color: red;
+}
+
+section  p{
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-top: 30px;
+}
+section .valor{
+    font-size: 15px;
+    margin: 0;
+    padding: 5px;
+
+}
+section .result{
+    display: none;
+}
+section .val{
+    color: red;
+    font-weight: 500;
+    margin-bottom: 20px;
+    display: none;
+}

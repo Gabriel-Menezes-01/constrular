@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    
+    
+}
+header{
+    width: 100vw;
+    height: 12vh;
+    background-color:transparent;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    position: fixed;
+    z-index: 2;
+    
+}
+header h1{
+    font-size: 2.8em;
+}
+header h1 .lar{
+    color: #DB0000;
+    font-size: 1.2em;
+}
+header h1 a{
+    text-decoration: none;
+    color:white ;
+}
+
+header nav a{
+    position: relative;
+    font-size: 1.2em;
+    text-decoration: none;
+    color:white;
+    font-weight: 500;
+    margin-left: 40px;
+   
+}
+.logins button{
+    width: 140px ;
+    height: 50px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 6px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.5s;
+
+}
+.logins button:hover{
+    background-color: white;
+    color: black;
+}
+header.rolar{
+    background-color:black ;
+  }
+
+
+/* inicio */
+.conteudo{
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.344), rgba(0, 0, 0,013)), url("../img/img1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-attachment: fixed;
+    
+}
+.conte-inicio{
+    position:absolute;
+    width: 90vw;
+
+}
+.conte-inicio h2{
+    position: relative;
+    margin-top: 40vh;
+    font-size: 2.5em;
+    padding-left: 60px;
+    color: white;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.conte-inicio p{
+    font-size: 1.3em;
+    line-height: 30px;
+    padding-top: 10px;
+    padding-left: 60px;
+    color: white;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+/* noticias */
+.swiper-container{
+    padding: 40px 30px;
+    overflow-x:  auto;
+
+}
+.slid-conteudo{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    
+    
+  }
+  .rss-item{
+    width:430px;
+    height: 400px;
+    backdrop-filter: blur(55px);
+    border-radius: 20px;
+    text-align: center;
+    margin-right: 40px;
+    transition: 0.3s;
+    cursor: pointer;
+    border: #DB0000 solid;
+  }
+  .rss-item img{
+    width: 400px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .rss-item p{
+    width: 400px;
+    color: black;
+  }
+  .rss-item h4{
+    width: 28vw;
+    margin: auto;
+  }
+  .rss-item a{
+    width: 100vw;
+    color:red;
+    text-decoration: none;
+  }
+
+/* footer */
+footer{
+    width: 100vw;
+    height: 35vh;
+    background:black;
+    color: white;
+}
+
+.conteudo-footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.conteudo-footer h2{
+    padding: 20px;
+    font-size: 2.8em;
+}
+ h2 .lar{
+    color: #DB0000;
+    font-size: 1.2em;
+}
+.items-contatos{
+    width: 300px;
+    margin-top: 20px;
+}
+.items-contatos i{
+    display: block;
+    font-size: 20px;
+    padding: 10px;
+    
+}
