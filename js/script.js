@@ -46,3 +46,16 @@ $('.gallery img').on('click', function() {
 $('.close').on('click', function() {
     $('.model').css('display', 'none');
 });
+
+
+//logins
+const openLogin = window.document.querySelector("#login");
+const openCadrasto = window.document.querySelector("#cadrasto");
+
+openLogin.addEventListener("click", function () {
+  window.location.href = "../login/login.html";
+});
+
+openCadrasto.addEventListener("click", function () {
+  window.location.href = "../login/cadrasto.html";
+});

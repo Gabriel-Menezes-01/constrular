@@ -4,8 +4,6 @@ $usuario = "root";
 $senha = "";
 $banco = "constrular";
 
-$conn = mysqli_connect($servidor, $usuario, $senha, $banco);
-if (!$conn) {
-    die("Falha na conexão: " . mysqli_connect_error());
-}
+$conn = new PDO("mysql:host=$servidor;dbname=$banco", $usuario, $senha);
+
 ?>

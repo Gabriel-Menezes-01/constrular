@@ -1,31 +1,37 @@
 <?php
-include 'conexao.php';
-
+include './conexao.php';
 session_start();
+if(isset($_POST['cadrasto'])){
+    if(!empty($_POST['nome']) && !empty($_POST['apelido']) && !empty($_POST['email']) && !empty($_POST['senha'])) {
+        $nome = $_POST['nome'];
+        $apelido = $_POST['apelido'];
+        $email = $_POST['email'];
+        $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Hashing the password for security
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
+        try {
+            $sql = "INSERT INTO usuario (nome, apelido, email, senha) VALUES (:nome, :apelido, :email, :senha)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':nome', $nome);
+            $stmt->bindParam(':apelido', $apelido);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':senha', $senha);
+            $stmt->execute();
 
-    if (isset($_POST['cadastro'])) {
-        $senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
-        $query = "INSERT INTO usuarios (email, senha) VALUES ('$email', '$senhaCriptografada')";
-        $conn->query($query);
-        echo "Usuário cadastrado com sucesso!";
-    } elseif (isset($_POST['login'])) {
-        $query = "SELECT senha FROM usuarios WHERE email='$email'";
-        $result = $conn->query($query);
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            if (password_verify($senha, $row['senha'])) {
-                $_SESSION['usuario'] = $email;
-                echo "Login realizado com sucesso!";
-            } else {
-                echo "Senha incorreta!";
-            }
-        } else {
-            echo "Usuário não encontrado!";
+            header('Location: ../front/Inicio.html');
+            exit();
+        } catch (PDOException $e) {
+            echo "Erro ao salvar os dados: " . $e->getMessage();
+            header('Location: ../login/cadrasto.html?error=1');
+            exit();
         }
+    } else {
+        header('Location: ../login/cadrasto.html?error=2');
+        exit();
     }
+} else {
+    header('Location: ../login/cadrasto.html');
+    exit();
 }
+
+
 ?>
