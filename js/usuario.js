@@ -1,17 +1,18 @@
-const inputuser = document.querySelector(".input");
-const btncadrasto = document.querySelector(".btn-cadastro"); 
-const erroSpan = document.querySelector(".span");
+const navMenu = document.getElementById('nav-menu');
+const navToggle = document.getElementById('menu');
+const navClose = document.getElementById('nav-close')
 
-btncadrasto.addEventListener("click", function (event) {
-  event.preventDefault(); // Impede o envio do formulário
-  const inputValue = inputuser.value.trim(); // Remove espaços em branco do início e do fim
+/* Menu show */
+if(navToggle){
+   navToggle.addEventListener('click', () =>{
+      navMenu.style.right = '0'
+      navMenu.style.transition = '0.5s'
+   })
+}
+if(navClose){
+   navClose.addEventListener('click', () =>{
+      navMenu.style.right = '-100%'
+      navMenu.style.transition = '0.5s'
+   })
 
-  if (inputValue === "") {
-    erroSpan.textContent = "Campo obrigatório"; // Exibe mensagem de erro
-    erroSpan.style.color = "red"; // Define a cor da mensagem de erro como vermelho
-  } else {
-    erroSpan.textContent = ""; // Limpa a mensagem de erro
-    window.location.href = "../login/cadrasto.html"; // Redireciona para a página de login
-  }
-});
-
+}

@@ -1,8 +1,9 @@
 <?php
 include './conexao.php';
 session_start();
-if(isset($_POST['cadrasto'])){
-    if(!empty($_POST['nome']) && !empty($_POST['apelido']) && !empty($_POST['email']) && !empty($_POST['senha'])) {
+
+if (isset($_POST['cadrasto'])) {
+    if (!empty($_POST['nome']) && !empty($_POST['apelido']) && !empty($_POST['email']) && !empty($_POST['senha'])) {
         $nome = $_POST['nome'];
         $apelido = $_POST['apelido'];
         $email = $_POST['email'];
@@ -15,23 +16,15 @@ if(isset($_POST['cadrasto'])){
             $stmt->bindParam(':apelido', $apelido);
             $stmt->bindParam(':email', $email);
             $stmt->bindParam(':senha', $senha);
+
             $stmt->execute();
 
-            header('Location: ../front/Inicio.html');
+            header('Location: ../frontLogado/Inicio.php');
             exit();
         } catch (PDOException $e) {
             echo "Erro ao salvar os dados: " . $e->getMessage();
-            header('Location: ../login/cadrasto.html?error=1');
-            exit();
         }
-    } else {
-        header('Location: ../login/cadrasto.html?error=2');
-        exit();
-    }
-} else {
-    header('Location: ../login/cadrasto.html');
-    exit();
+    } 
 }
-
 
 ?>

@@ -17,10 +17,10 @@
   <header class="tod-cont">
     <h1><a href="./Inicio.html">Constru<span class="lar" >Lar</span</a></h1>
     <nav>
-      <a href="./Inicio.html">INICIO</a>
-      <a href="./orcamento.html">ORÇAMENTO</a>
-      <a href="./contato.html">CONTATOS</a>
-      <a href="./sobre.html">SOBRE</a>
+      <a href="./Inicio.php">INICIO</a>
+      <a href="./orcamento.php">ORÇAMENTO</a>
+      <a href="./contato.php">CONTATOS</a>
+      <a href="./sobre.php">SOBRE</a>
     </nav>
     <div class="logins">
       <button id="login">LOGIN</button>

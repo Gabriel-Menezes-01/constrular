@@ -144,9 +144,5 @@ body{
   .a:hover{
     text-decoration: underline;
   }
-  .span, .span2{
-    display: none;
-    color: rgb(247, 82, 82);
-    padding: 0 10px;
-  }
+ 
   

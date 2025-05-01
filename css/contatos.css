@@ -87,5 +87,9 @@ section .input-button button{
 section .input-button button:hover{
     color: red;
 }
-  
+
+h2 .lar{
+    color: #DB0000;
+    font-size: 1.2em;
+}
   

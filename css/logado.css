@@ -1,0 +1,63 @@
+.menu{
+  background-color: transparent;
+  border: none;
+}
+
+.menu i {
+  font-size: 40px;
+  padding: 10px;
+  color: white;
+  transition: 0.5s;
+}
+.menu i:hover {
+  color: #DB0000;
+}
+
+.nav__close{
+  display: flex;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  justify-content: center;
+
+}
+
+/* Navigation for mobile devices */
+
+  .nav__menu {
+    position: fixed;
+    right: -100%;
+    top: 12%;
+    background-color:white;
+    width: 20%;
+    height: 60%;
+    padding: 2rem 4.5rem 4.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+  
+  }
+
+
+
+.nav__list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  gap: 2rem;
+  
+}
+.nav__item {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #333;
+  text-decoration: none;
+  transition: color .3s;
+}
+.nav__item:hover {
+  color: #DB0000;
+}

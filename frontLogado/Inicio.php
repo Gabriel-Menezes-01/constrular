@@ -1,4 +1,9 @@
+<?php
+include_once '../conexao.php';
+include_once '../verificaLogin.php';
+session_start();
 
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -6,6 +11,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/logado.css">
   <title>ConstruLar</title>
 </head>
 
@@ -15,15 +21,40 @@
   <header class="tod-cont">
     <h1><a href="./Inicio.html">Constru<span class="lar" >Lar</span</a></h1>
     <nav>
-      <a href="./Inicio.html">INÍCIO</a>
-      <a href="./orcamento.html">ORÇAMENTO</a>
-      <a href="./contato.html">CONTATOS</a>
-      <a href="./sobre.html">SOBRE</a>
+      <a href="./Inicio.php">INÍCIO</a>
+      <a href="./orcamento.php">ORÇAMENTO</a>
+      <a href="./contato.php">CONTATOS</a>
+      <a href="./sobre.php">SOBRE</a>
     </nav>
-    <div class="logins">
-      <button id="login">LOGIN</button>
-      <button id="cadrasto">CADASTRA-SE</button>
+
+    <button class="menu" id="menu"  >
+      <i class="bi bi-person-circle"></i>
+    </button>
+   
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+
+          <li class="nav__item">
+              <span></span>
+          </li>
+
+          <li class="nav__item">
+              <span>list</span>
+          </li>
+
+          <li class="nav__item">
+              <span>Sair</span>
+          
+          </li>
+      </ul>
+
+      <!-- Close button -->
+      <button class="nav__close" id="nav-close">
+        <i class="bi bi-x-circle"></i>
+      </button>
+      
     </div>
+    
   </header>
   
   <!-- imagem com texto -->
@@ -68,6 +99,7 @@
   <script src="../js/noticias.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/usuario.js"></script>
+  
   
 </body>
 

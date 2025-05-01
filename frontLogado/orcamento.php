@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/orcamento.css">
+  <link rel="stylesheet" href="../css/logado.css">
   <title>Orçamento</title>
 </head>
 
@@ -16,14 +17,13 @@
       <h1><a href="./Inicio.html">Constru<span class="lar" >Lar</span</a></h1>
     </h1>
     <nav>
-      <a href="./Inicio.html" >INICIO</a>
-      <a href="./orcamento.html">ORÇAMENTO</a>
-      <a href="./contato.html">CONTATOS</a>
-      <a href="./sobre.html">SOBRE</a>
+      <a href="./Inicio.php" >INICIO</a>
+      <a href="./orcamento.php">ORÇAMENTO</a>
+      <a href="./contato.php">CONTATOS</a>
+      <a href="./sobre.php">SOBRE</a>
     </nav>
-    <div class="logins">
-      <button id="login">LOGIN</button>
-      <button id="cadrasto">CADASTRA-SE</button>
+    <div class="menu" id="menuu" >
+      <i class="bi bi-person-circle"></i>
     </div>
   </header>
 

@@ -6,19 +6,20 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../css/contatos.css">
   <link rel="stylesheet" href="../css/styles.css">
+  
   <title>Contatos</title>
 </head>
 <body>
     <!-- nav bar -->
     <header class="tod-cont">
       <h1>
-        Constru<span>Lar</span>
+      <h1><a href="./Inicio.html">Constru<span class="lar" >Lar</span</a></h1>
       </h1>
       <nav>
-        <a href="./Inicio.html">INICIO</a>
-        <a href="./orcamento.html">ORÇAMENTO</a>
-        <a href="./contato.html">CONTATOS</a>
-        <a href="./sobre.html">SOBRE</a>
+        <a href="./Inicio.php">INICIO</a>
+        <a href="./orcamento.php">ORÇAMENTO</a>
+        <a href="./contato.php">CONTATOS</a>
+        <a href="./sobre.php">SOBRE</a>
       </nav>
       <div class="logins">
         <button id="login">LOGIN</button>
@@ -71,7 +72,7 @@
   <footer>
     <div class="conteudo-footer">
       <h2>
-        Constru<span>Lar</span>
+      Constru<span class="lar">Lar</span>
       </h2>
       <div class="items-contatos">
         <i class="bi bi-facebook"> ConstruLar</i>

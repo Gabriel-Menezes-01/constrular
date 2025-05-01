@@ -15,40 +15,40 @@
             </div>
 
             <div class="input_text">
-                <input type="text" name="nome" class="input" id="nome">
+                <input type="text" name="nome" class="input required"  id="nome" required>
                 <label for="nome" class="label">Nome</label>
                 <i class="bi bi-person"></i>
-                <p class="span">Preencha todos os campos.</p>
+                
             </div>
             
             <div class="input_text">
-                <input  type="text" name="apelido" class="input">
+                <input  type="text" name="apelido" class="input required" id="apelido" required>
                 <label for="apelido" class="label">Apelido</label>
                 <i class="bi bi-person"></i>
-                <p class="span">Preencha todos os campos.</p>
+                
             </div>
             
             <div class="input_text">
-                <input type="email" name="email" class="input">
+                <input type="email" name="email" class="input required" id="email" required>
                 <label for="email" class="label">E-mail</label>
                 <i class="bi bi-envelope-at"></i>
-                <p class="span">Preencha todos os campos.</p>
+                
             </div>
 
             <div class="input_text">
-                <input type="password" name="senha" class="input">
+                <input type="password" name="senha" class="input required" id="senha" required>
                 <label for="senha" class="label">Senha</label>
                 <i class="bi bi-key"></i>
-                <p class="span">Preencha todos os campos.</p>
+                
             </div>
             
             <button type="submit" name="cadrasto" class="btn-cadrasto" id="entre" >CADRASTA-SE</button>
-            <p class="p">Já tem uma conta? <a href="./login.html" class="a">Entre</a></p>
-            <p><a href="../front/Inicio.html" class="a">Volta para Inicio</a></p>
+            <p class="p">Já tem uma conta? <a href="./login.php" class="a">Entre</a></p>
+            <p><a href="../front/Inicio.php" class="a">Volta para Inicio</a></p>
 
         </form>
     </section>
 
-    <script src="../js/usuario.js"></script>
+<script src="../js/usuario.js"></script>
 </body>
 </html>
