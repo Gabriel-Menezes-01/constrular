@@ -1,8 +1,32 @@
-<?php
-include_once '../conexao.php';
-include_once '../verificaLogin.php';
-session_start();
-
+<?php 
+    session_start();
+  
+    include_once('../backend/usuarios.php');
+    // Verifica se o usuário está logado
+    if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
+      unset($_SESSION['email']);
+      unset($_SESSION['senha']);
+        header("Location: ./Inicio.php");
+        exit;
+    }
+    
+    $email = $_SESSION['email'];
+    
+    // Consulta SQL para buscar o usuário pelo email
+    $mysql = "SELECT nome, apelido FROM user WHERE email = '$email'";
+    $Result = $conect->query($mysql);
+    
+    // Verifica se encontrou o usuário
+    if ($Result && mysqli_num_rows($Result) > 0) {
+        $user = mysqli_fetch_assoc($Result);
+        $nome = $user['nome'];
+        $apelido = $user['apelido'];
+    } else {
+        echo "Usuário não encontrado.";
+        exit;
+    }
+    
+    
 ?>
 <!DOCTYPE html>
 <html lang="pt">
