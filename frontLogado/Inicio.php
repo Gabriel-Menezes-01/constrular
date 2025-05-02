@@ -35,7 +35,9 @@ session_start();
       <ul class="nav__list">
 
           <li class="nav__item">
-              <span></span>
+              <span><?php
+              
+              ?></span>
           </li>
 
           <li class="nav__item">
