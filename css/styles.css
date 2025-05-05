@@ -46,7 +46,7 @@ header nav a{
    
 }
 .logins button{
-    width: 140px ;
+    width: 150px ;
     height: 50px;
     background-color: transparent;
     color: white;
@@ -175,4 +175,15 @@ footer{
     font-size: 20px;
     padding: 10px;
     
+}
+
+.logins button .link{
+    text-decoration: none;
+    color: white;
+
+    padding: 15px 50px;
+}
+
+.logins button .link:hover{
+    color: black;
 }
