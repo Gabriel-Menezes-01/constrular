@@ -61,3 +61,7 @@
 .nav__item:hover {
   color: #DB0000;
 }
+.nav__item .list {
+ cursor: pointer;
+ 
+}

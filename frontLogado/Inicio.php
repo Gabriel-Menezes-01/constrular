@@ -1,35 +1,31 @@
-<?php 
-    session_start();
-  
-    include_once('../backend/usuarios.php');
-    // Verifica se o usuário está logado
-    if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
-      unset($_SESSION['email']);
-      unset($_SESSION['senha']);
-        header("Location: ./Inicio.php");
-        exit;
-    }
-    
-    $email = $_SESSION['email'];
-    
-    // Consulta SQL para buscar o usuário pelo email
-    $mysql = "SELECT nome, apelido FROM user WHERE email = '$email'";
-    $Result = $conect->query($mysql);
-    
-    // Verifica se encontrou o usuário
-    if ($Result && mysqli_num_rows($Result) > 0) {
-        $user = mysqli_fetch_assoc($Result);
-        $nome = $user['nome'];
-        $apelido = $user['apelido'];
-    } else {
-        echo "Usuário não encontrado.";
-        exit;
-    }
-    
-    
+<?php
+session_start();
+include '../backend/conexao.php';
+
+if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
+  header('Location: ../front /Inicio.php');
+  exit;
+}
+
+$email = $_SESSION['email'];
+
+$query = "SELECT nome, apelido FROM usuario WHERE email = :email";
+$stmt = $conn->prepare($query);
+$stmt->bindParam(':email', $email, PDO::PARAM_STR);
+$stmt->execute();
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($result) {
+  $nome = $result['nome'];
+  $apelido = $result['apelido'];
+} else {
+  $nome = 'Usuario';
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -43,7 +39,8 @@
 
   <!-- nav bar -->
   <header class="tod-cont">
-    <h1><a href="./Inicio.html">Constru<span class="lar" >Lar</span</a></h1>
+    <h1><a href="./Inicio.html">Constru<span class="lar">Lar</span< /a>
+    </h1>
     <nav>
       <a href="./Inicio.php">INÍCIO</a>
       <a href="./orcamento.php">ORÇAMENTO</a>
@@ -51,57 +48,57 @@
       <a href="./sobre.php">SOBRE</a>
     </nav>
 
-    <button class="menu" id="menu"  >
+    <button class="menu" id="menu">
       <i class="bi bi-person-circle"></i>
     </button>
-   
+
     <div class="nav__menu" id="nav-menu">
       <ul class="nav__list">
 
-          <li class="nav__item">
-              <span><?php
-              
-              ?></span>
-          </li>
+        <li class="nav__item">
+          <span class="list"><?php
+                              echo " $nome  $apelido";
+                              ?></span>
+        </li>
 
-          <li class="nav__item">
-              <span>list</span>
-          </li>
+        <li class="nav__item">
+          <span class="list">list</span>
+        </li>
 
-          <li class="nav__item">
-              <span>Sair</span>
-          
-          </li>
+        <li class="nav__item">
+          <span class="list" id="sair">Sair</span>
+
+        </li>
       </ul>
 
       <!-- Close button -->
       <button class="nav__close" id="nav-close">
         <i class="bi bi-x-circle"></i>
       </button>
-      
+
     </div>
-    
+
   </header>
-  
+
   <!-- imagem com texto -->
   <section class="conteudo">
-    
-      <div class="conte-inicio">
-        <h2 class="">Realizando Sonhos</h2>
-        <p class="text">
-          A Construtora Contrular, com mais de 20 anos de experiência, é especialista em transformar sonhos em realidade.
-          Nosso compromisso é construir mais do que casas, é construir lares. Oferecemos soluções completas, desde o
-          projeto arquitetônico até a entrega das chaves, com qualidade, segurança e respeito aos prazos. Nossa equipe de
-          profissionais altamente qualificados está pronta para te ajudar a construir o futuro que você deseja.
-        </p>
-      </div>
+
+    <div class="conte-inicio">
+      <h2 class="">Realizando Sonhos</h2>
+      <p class="text">
+        A Construtora Contrular, com mais de 20 anos de experiência, é especialista em transformar sonhos em realidade.
+        Nosso compromisso é construir mais do que casas, é construir lares. Oferecemos soluções completas, desde o
+        projeto arquitetônico até a entrega das chaves, com qualidade, segurança e respeito aos prazos. Nossa equipe de
+        profissionais altamente qualificados está pronta para te ajudar a construir o futuro que você deseja.
+      </p>
+    </div>
   </section>
 
   <!-- reels de noticias -->
   <aside class="noticias">
     <div class="swiper-container">
 
-      <div class="slid-conteudo" id="conteine" ></div>
+      <div class="slid-conteudo" id="conteine"></div>
 
     </div>
   </aside>
@@ -125,8 +122,8 @@
   <script src="../js/noticias.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/usuario.js"></script>
-  
-  
+
+
 </body>
 
 </html>

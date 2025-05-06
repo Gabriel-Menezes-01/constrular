@@ -16,3 +16,10 @@ if(navClose){
    })
 
 }
+
+
+const sair = document.querySelector('#sair');
+
+sair.addEventListener('click', function() {
+      window.location.href = '../backend/config.php';
+});

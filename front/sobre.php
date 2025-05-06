@@ -22,9 +22,10 @@
       <a href="./contato.php">CONTATOS</a>
       <a href="./sobre.php">SOBRE</a>
     </nav>
-    <div class="logins">
-      <button id="login">LOGIN</button>
-      <button id="cadrasto">CADASTRA-SE</button>
+    <div class="logins" id="loginss" >
+      <button class="login">LOGIN</button>
+
+      <button class = "cadrasto">CADASTRA-SE</button>
     </div>
   </header>
   <section class="sobre">
@@ -84,6 +85,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/usuario.js"></script>
+  <script src="../js/logado.js"></script>
 </body>
 
 </html>

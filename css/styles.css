@@ -177,13 +177,3 @@ footer{
     
 }
 
-.logins button .link{
-    text-decoration: none;
-    color: white;
-
-    padding: 15px 50px;
-}
-
-.logins button .link:hover{
-    color: black;
-}

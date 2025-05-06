@@ -14,10 +14,10 @@ if (isset($_POST['login'])) {
     $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     if (count($resultado) > 0) {
-        $_SESSION['usuario'] = $resultado[0]['email'];
-        $_SESSION['senha'] = $resultado[0]['senha'];
-        $_SESSION['logged_in'] = true; // Set a session variable to indicate login status
-        header('Location: ../frontLogado/Inicio.php'); // Redirect to the main page after login
+        $_SESSION['email'] = $email;
+        $_SESSION['senha'] = $senha;
+
+        header('Location: ../frontLogado/Inicio.php');
     } else {
         header('Location: ../login/login.php'); 
     }

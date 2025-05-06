@@ -1,3 +1,28 @@
+<?php
+session_start();
+include '../backend/conexao.php';
+
+if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
+  header('Location: ../front /Inicio.php');
+  exit;
+}
+
+$email = $_SESSION['email'];
+
+$query = "SELECT nome, apelido FROM usuario WHERE email = :email";
+$stmt = $conn->prepare($query);
+$stmt->bindParam(':email', $email, PDO::PARAM_STR);
+$stmt->execute();
+$result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if ($result) {
+  $nome = $result['nome'];
+  $apelido = $result['apelido'];
+} else {
+  $nome = 'Usuario';
+}
+
+?>
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -23,9 +48,36 @@
       <a href="./contato.php">CONTATOS</a>
       <a href="./sobre.php">SOBRE</a>
     </nav>
-    <div class="menu" id="menuu" >
+    <button class="menu" id="menu">
       <i class="bi bi-person-circle"></i>
+    </button>
+
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+
+        <li class="nav__item">
+          <span class="list"><?php
+                              echo " $nome  $apelido";
+                              ?></span>
+        </li>
+
+        <li class="nav__item">
+          <span class="list">list</span>
+        </li>
+
+        <li class="nav__item">
+          <span class="list" id="sair">Sair</span>
+
+        </li>
+      </ul>
+
+      <!-- Close button -->
+      <button class="nav__close" id="nav-close">
+        <i class="bi bi-x-circle"></i>
+      </button>
+
     </div>
+
   </header>
   <section class="sobre">
     
