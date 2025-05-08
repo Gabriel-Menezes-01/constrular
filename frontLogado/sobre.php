@@ -102,21 +102,101 @@ if ($result) {
     <section class="galeria">
       <div>
         <div class="gallery">
-              <img src="../img/imgSobre/casa1.jpg" alt="Imagem 2" class="gallery-item">
-              <img src="../img/imgSobre/casa4.jpg" alt="Imagem 4" class="gallery-item">
-              <img src="../img/imgSobre/casa5.jpg" alt="Imagem 5" class="gallery-item">
-              <img src="../img/imgSobre/casa6.jpg" alt="Imagem 6" class="gallery-item">
-              <img src="../img/imgSobre/casa7.jpg" alt="Imagem 7" class="gallery-item">
-              <img src="../img/imgSobre/casa8.jpg" alt="Imagem 8" class="gallery-item">
-            
-          </div>
+          <?php
+          $directory = '../img/imgSobre/';
+          $images = glob($directory . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
 
-          <div class="model">
-            <span class="close" >&times;</span>
-            <img  src="../img/imgSobre/casa1.jpg" class="modal-content" alt="">
-          </div>
+          // Limit the number of images to 6
+          $images = array_slice($images, 0, 6);
+
+          foreach ($images as $image) {
+            echo '<div class="gallery-item-container">';
+            echo '<img src="' . $image . '" alt="Imagem" class="gallery-item">';
+            echo '<form action="sobre.php" method="post" enctype="multipart/form-data" class="upload-img">';
+            echo '<input type="hidden" name="current_image" value="' . $image . '">';
+            echo '<input type="file" name="imagem" class="btn_img" required>';
+            echo '<button type="submit">Substituir</button>';
+            echo '</form>';
+
+            echo '<form action="sobre.php" method="post" class="delete-img">';
+            echo '<input type="hidden" name="image_to_delete" value="' . $image . '">';
+            echo '<button type="submit" class="delete-button">Deletar</button>';
+            echo '</form>';
+            echo '</div>';
+          }
+
+            // Manipulação automática de substituição de imagem
+          if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['imagem'])) {
+            $currentImage = $_POST['current_image'];
+            $newImage = $_FILES['imagem'];
+
+            // Verifique se o arquivo enviado é válido
+            if ($newImage['error'] === UPLOAD_ERR_OK) {
+              $newImagePath = $directory . basename($newImage['name']);
+
+              // Move the new image to the directory
+              if (move_uploaded_file($newImage['tmp_name'], $newImagePath)) {
+                // Replace the old image with the new one
+                if (file_exists($currentImage)) {
+                  unlink($currentImage);
+                }
+
+                // Move the new image to the location of the old image
+                copy($newImagePath, $currentImage);
+
+                // Delete the temporary uploaded file
+                unlink($newImagePath);
+              }
+            }
+          }
+
+          // Automatically delete excess images to maintain a maximum of 6
+          $allImages = glob($directory . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+          if (count($allImages) > 6) {
+            $excessImages = array_slice($allImages, 6);
+            foreach ($excessImages as $excessImage) {
+              unlink($excessImage); // Delete the excess image
+            }
+          }
+          ?>
+        </div>
+        <form action="sobre.php" method="post" enctype="multipart/form-data" class="add-img-form">
+          <input type="file" name="new_image" class="btn_img" required>
+          <button type="submit" class="add-button">Adicionar Imagem</button>
+        </form>
+        <?php
+        // Handle new image upload
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['new_image'])) {
+          $newImage = $_FILES['new_image'];
+
+          // Check if the uploaded file is valid
+          if ($newImage['error'] === UPLOAD_ERR_OK) {
+            $newImagePath = $directory . basename($newImage['name']);
+
+            // Move the new image to the directory
+            if (move_uploaded_file($newImage['tmp_name'], $newImagePath)) {
+              // Ensure the total number of images does not exceed 6
+              $allImages = glob($directory . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+              if (count($allImages) > 6) {
+                $excessImages = array_slice($allImages, 6);
+                foreach ($excessImages as $excessImage) {
+                  unlink($excessImage); // Delete the excess image
+                }
+              }
+            }
+          }
+        }
+        ?>
+      </div>
+   
+        <div class="model">
+          <span class="close">&times;</span>
+          <img src="" class="modal-content" alt="">
+        </div>
       </div>
     </section>
+
+  
   
   <!-- rodape -->
   <footer>
