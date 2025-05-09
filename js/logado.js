@@ -7,3 +7,6 @@ openLogin.addEventListener('click', function() {
 openCadrasto.addEventListener('click', function() {
     window.location.href = '../login/cadastro.php';
 });
+
+
+

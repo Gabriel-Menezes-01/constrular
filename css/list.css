@@ -1,0 +1,39 @@
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 8px;
+    color: #000;
+  }
+
+  .modal-content {
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+  }
+
+  .close-modal {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+   
+  }
+
+  #user-list {
+    list-style-type: none;
+    padding: 20px;
+    
+  }
+
+  #user-list li {
+    margin: 5px 0;
+    border: 1px solid #000;
+    padding: 10px;
+  }

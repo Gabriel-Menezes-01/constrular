@@ -32,6 +32,7 @@ if ($result) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/logado.css">
+  <link rel="stylesheet" href="../css/list.css">
   <title>ConstruLar</title>
 </head>
 
@@ -56,15 +57,38 @@ if ($result) {
       <ul class="nav__list">
 
         <li class="nav__item">
-          <span class="list"><?php
-                              echo " $nome  $apelido";
-                              ?></span>
+          <span class="list">
+            <?php
+              echo " $nome  $apelido";
+            ?>
+          </span>
         </li>
 
         <li class="nav__item">
-          <span class="list">list</span>
+          <span class="list" id="show-users">
+            Ver Usuários
+          </span>
         </li>
 
+        <div id="user-modal" class="modal" style="display: none;">
+          <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h2>Lista de Usuários</h2>
+            <ul id="user-list">
+              <?php
+              $userQuery = "SELECT nome, email FROM usuario";
+              $userStmt = $conn->prepare($userQuery);
+              $userStmt->execute();
+              $users = $userStmt->fetchAll(PDO::FETCH_ASSOC);
+
+              foreach ($users as $user) {
+          echo "<li>" . htmlspecialchars($user['nome']) . " - " . htmlspecialchars($user['email']) . "</li>";
+              }
+              ?>
+            </ul>
+          </div>
+        </div>
+        
         <li class="nav__item">
           <span class="list" id="sair">Sair</span>
 
@@ -122,6 +146,8 @@ if ($result) {
   <script src="../js/noticias.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/usuario.js"></script>
+  <script src="../js/list.js"></script>
+  <script src="../admin/autorizacao.js"></script>
 
 
 </body>

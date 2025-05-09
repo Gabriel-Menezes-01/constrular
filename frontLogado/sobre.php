@@ -33,6 +33,8 @@ if ($result) {
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/sobre.css">
   <link rel="stylesheet" href="../css/logado.css">
+  <link rel="stylesheet" href="../css/list.css">
+
 
   <title>ConstruLar</title>
 </head>
@@ -55,15 +57,38 @@ if ($result) {
     <div class="nav__menu" id="nav-menu">
       <ul class="nav__list">
 
-        <li class="nav__item">
-          <span class="list"><?php
-                              echo " $nome  $apelido";
-                              ?></span>
+      <li class="nav__item">
+          <span class="list">
+            <?php
+              echo " $nome  $apelido";
+            ?>
+          </span>
         </li>
 
         <li class="nav__item">
-          <span class="list">list</span>
+          <span class="list" id="show-users">
+            Ver Usuários
+          </span>
         </li>
+
+        <div id="user-modal" class="modal" style="display: none;">
+          <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <h2>Lista de Usuários</h2>
+            <ul id="user-list">
+              <?php
+              $userQuery = "SELECT nome, email FROM usuario";
+              $userStmt = $conn->prepare($userQuery);
+              $userStmt->execute();
+              $users = $userStmt->fetchAll(PDO::FETCH_ASSOC);
+
+              foreach ($users as $user) {
+          echo "<li>" . htmlspecialchars($user['nome']) . " - " . htmlspecialchars($user['email']) . "</li>";
+              }
+              ?>
+            </ul>
+          </div>
+        </div>
 
         <li class="nav__item">
           <span class="list" id="sair">Sair</span>
@@ -117,77 +142,44 @@ if ($result) {
             echo '<input type="file" name="imagem" class="btn_img" required>';
             echo '<button type="submit">Substituir</button>';
             echo '</form>';
-
-            echo '<form action="sobre.php" method="post" class="delete-img">';
-            echo '<input type="hidden" name="image_to_delete" value="' . $image . '">';
-            echo '<button type="submit" class="delete-button">Deletar</button>';
-            echo '</form>';
             echo '</div>';
           }
 
-            // Manipulação automática de substituição de imagem
+        
           if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['imagem'])) {
             $currentImage = $_POST['current_image'];
             $newImage = $_FILES['imagem'];
 
-            // Verifique se o arquivo enviado é válido
+           
             if ($newImage['error'] === UPLOAD_ERR_OK) {
               $newImagePath = $directory . basename($newImage['name']);
 
-              // Move the new image to the directory
+              
               if (move_uploaded_file($newImage['tmp_name'], $newImagePath)) {
-                // Replace the old image with the new one
+               
                 if (file_exists($currentImage)) {
                   unlink($currentImage);
                 }
 
-                // Move the new image to the location of the old image
+              
                 copy($newImagePath, $currentImage);
 
-                // Delete the temporary uploaded file
+              
                 unlink($newImagePath);
               }
             }
           }
 
-          // Automatically delete excess images to maintain a maximum of 6
+          
           $allImages = glob($directory . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
           if (count($allImages) > 6) {
             $excessImages = array_slice($allImages, 6);
             foreach ($excessImages as $excessImage) {
-              unlink($excessImage); // Delete the excess image
+              unlink($excessImage);
             }
           }
           ?>
         </div>
-        <form action="sobre.php" method="post" enctype="multipart/form-data" class="add-img-form">
-          <input type="file" name="new_image" class="btn_img" required>
-          <button type="submit" class="add-button">Adicionar Imagem</button>
-        </form>
-        <?php
-        // Handle new image upload
-        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['new_image'])) {
-          $newImage = $_FILES['new_image'];
-
-          // Check if the uploaded file is valid
-          if ($newImage['error'] === UPLOAD_ERR_OK) {
-            $newImagePath = $directory . basename($newImage['name']);
-
-            // Move the new image to the directory
-            if (move_uploaded_file($newImage['tmp_name'], $newImagePath)) {
-              // Ensure the total number of images does not exceed 6
-              $allImages = glob($directory . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
-              if (count($allImages) > 6) {
-                $excessImages = array_slice($allImages, 6);
-                foreach ($excessImages as $excessImage) {
-                  unlink($excessImage); // Delete the excess image
-                }
-              }
-            }
-          }
-        }
-        ?>
-      </div>
    
         <div class="model">
           <span class="close">&times;</span>
@@ -216,6 +208,8 @@ if ($result) {
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/usuario.js"></script>
+  <script src="../js/list.js"></script>
+  <script src="../admin/autorizacao.js"></script>
 </body>
 
 </html>

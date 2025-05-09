@@ -65,3 +65,39 @@
  cursor: pointer;
  
 }
+
+/* modal dos usuarios  */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 8px;
+  color: black;
+}
+
+.modal-content {
+  position: relative;
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+#user-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+#user-list li {
+  margin: 5px 0;
+ 
+}
