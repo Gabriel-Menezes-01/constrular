@@ -51,12 +51,12 @@
     <section class="galeria">
       <div>
         <div class="gallery">
-              <img src="../img/imgSobre/casa1.jpg" alt="Imagem 2" class="gallery-item">
-              <img src="../img/imgSobre/casa4.jpg" alt="Imagem 4" class="gallery-item">
-              <img src="../img/imgSobre/casa5.jpg" alt="Imagem 5" class="gallery-item">
-              <img src="../img/imgSobre/casa6.jpg" alt="Imagem 6" class="gallery-item">
-              <img src="../img/imgSobre/casa7.jpg" alt="Imagem 7" class="gallery-item">
-              <img src="../img/imgSobre/casa8.jpg" alt="Imagem 8" class="gallery-item">
+              <img src="../img/imgSobre/1.jpg" alt="Imagem 2" class="gallery-item">
+              <img src="../img/imgSobre/2.jpg" alt="Imagem 4" class="gallery-item">
+              <img src="../img/imgSobre/3.jpeg" alt="Imagem 5" class="gallery-item">
+              <img src="../img/imgSobre/4.jpg" alt="Imagem 6" class="gallery-item">
+              <img src="../img/imgSobre/5.jpg" alt="Imagem 7" class="gallery-item">
+              <img src="../img/imgSobre/6.jpeg" alt="Imagem 8" class="gallery-item">
             
           </div>
 

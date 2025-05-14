@@ -7,7 +7,7 @@ if (isset($_POST['cadrasto'])) {
         $nome = $_POST['nome'];
         $apelido = $_POST['apelido'];
         $email = $_POST['email'];
-        $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Hashing the password for security
+        $senha =$_POST['senha'];
 
         try {
             $sql = "INSERT INTO usuario (nome, apelido, email, senha) VALUES (:nome, :apelido, :email, :senha)";
@@ -19,6 +19,9 @@ if (isset($_POST['cadrasto'])) {
 
             $stmt->execute();
 
+            // Login automático após cadastro
+            $_SESSION['email'] = $email;
+            $_SESSION['senha'] = $senha;
             header('Location: ../frontLogado/Inicio.php');
             exit();
         } catch (PDOException $e) {

@@ -3,26 +3,70 @@ session_start();
 include '../backend/conexao.php';
 
 if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
-  header('Location: ../front /Inicio.php');
+  header('Location: ../front/Inicio.php');
+  exit;
+}
+$email = $_SESSION['email'];
+
+ 
+
+// Consulta o usuário logado
+$query = "SELECT nome, apelido, email FROM usuario WHERE email = :email";
+$stmt = $conn->prepare($query);
+$stmt->bindParam(':email', $email);
+$stmt->execute();
+$resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+if ($resultado) {
+  $nome = $resultado['nome'];
+  $apelido = $resultado['apelido'];
+  $email = $resultado['email'];
+} else {
+  
+  header('Location: ../front/Inicio.php');
   exit;
 }
 
-$email = $_SESSION['email'];
 
-$query = "SELECT nome, apelido FROM usuario WHERE email = :email";
-$stmt = $conn->prepare($query);
-$stmt->bindParam(':email', $email, PDO::PARAM_STR);
-$stmt->execute();
-$result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($result) {
-  $nome = $result['nome'];
-  $apelido = $result['apelido'];
-} else {
-  $nome = 'Usuario';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['get_logged_email']) && $_POST['get_logged_email'] == '1') {
+  header('Access-Control-Allow-Origin: *');
+  header('Content-Type: application/json');
+  echo json_encode(['email' => $email]);
+  exit;
+}
+?>
+<script>
+
+function buscarEmailLogado(callback) {
+  fetch(window.location.pathname, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+    body: 'get_logged_email=1'
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (callback) callback(data.email);
+  });
 }
 
-?>
+buscarEmailLogado(function(email) {
+  // Mostra o botão "Ver Usuários" apenas para o admin
+  var showUsersElems = document.querySelectorAll('.users');
+  if (email === 'admin@gmail.com') {
+    showUsersElems.forEach(function(elem) {
+      elem.style.display = 'block';
+    });
+  } else {
+    showUsersElems.forEach(function(elem) {
+      elem.style.display = 'none';
+    });
+  }
+});
+
+</script>
+
+
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -64,7 +108,7 @@ if ($result) {
         </li>
 
         <li class="nav__item">
-          <span class="list" id="show-users">
+          <span class="list users" id="show-users" style="display: none;">
             Ver Usuários
           </span>
         </li>
