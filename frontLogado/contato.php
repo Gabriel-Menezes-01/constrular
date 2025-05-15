@@ -205,7 +205,6 @@ buscarEmailLogado(function(email) {
   <script src="../js/script.js"></script>
   <script src="../js/usuario.js"></script>
   <script src="../js/list.js"></script>
-  <script src="../admin/autorizacao.js"></script>
 
 </body>
 </html>

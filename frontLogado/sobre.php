@@ -50,18 +50,28 @@ function buscarEmailLogado(callback) {
 }
 
 buscarEmailLogado(function(email) {
-  // Mostra o botão "Ver Usuários" apenas para o admin
-  var showUsersElems = document.querySelectorAll('.users');
+  
+  const showUsersElems = document.querySelectorAll('.users');
+  const showUsersImg = document.querySelectorAll('.upload-img');
+
   if (email === 'admin@gmail.com') {
     showUsersElems.forEach(function(elem) {
       elem.style.display = 'block';
+    });
+    showUsersImg.forEach(function(form) {
+      form.style.display = 'block';
     });
   } else {
     showUsersElems.forEach(function(elem) {
       elem.style.display = 'none';
     });
+    showUsersImg.forEach(function(form) {
+      form.style.display = 'none';
+    });
   }
 });
+
+
 
 </script>
 
@@ -181,10 +191,10 @@ buscarEmailLogado(function(email) {
           foreach ($images as $image) {
             echo '<div class="gallery-item-container">';
             echo '<img src="' . $image . '" alt="Imagem" class="gallery-item">';
-            echo '<form action="sobre.php" method="post" enctype="multipart/form-data" class="upload-img" id="img-modal" style="display: none;">';
+            echo '<form action="sobre.php" method="post" enctype="multipart/form-data" class="upload-img"  style="display: none;">';
             echo '<input type="hidden" name="current_image" value="' . $image . '">';
             echo '<input type="file" name="imagem" class="btn_img" required>';
-            echo '<button type="submit">Substituir</button>';
+            echo '<button type="submit">Substituir</button> ';
             echo '</form>';
             echo '</div>';
           }
@@ -253,7 +263,7 @@ buscarEmailLogado(function(email) {
   <script src="../js/script.js"></script>
   <script src="../js/usuario.js"></script>
   <script src="../js/list.js"></script>
-  <script src="../admin/autorizacao.js"></script>
+  
 </body>
 
 </html>
