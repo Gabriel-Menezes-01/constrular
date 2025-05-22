@@ -4,14 +4,12 @@ $usuario = "root";
 $senha = "";
 $banco = "constrular";
 
- $conn = new PDO("mysql:host=$servidor;dbname=$banco", $usuario, $senha);
-// try {
-   
-//     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//     
+$conn = mysqli_connect($servidor, $usuario, $senha, $banco);
+
+// if (!$conn) {
+//     die("Erro na conexão: " . mysqli_connect_error());
+// } else {
 //     echo "Conexão bem-sucedida!";
-// } catch (PDOException $e) {
-//     echo "Erro na conexão: " . $e->getMessage();
 // }
 // 
 ?>

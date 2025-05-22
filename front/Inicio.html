@@ -14,18 +14,28 @@
 
   <!-- nav bar -->
   <header class="tod-cont">
-    <h1><a href="./Inicio.html">Constru<span class="lar" >Lar</span</a></h1>
+    <h1><a href="./Inicio.html">Constru<span class="lar" >Lar</span></a></h1>
     <nav>
-      <a href="./Inicio.php">INÍCIO</a>
-      <a href="./orcamento.php">ORÇAMENTO</a>
-      <a href="./contato.php">CONTATOS</a>
-      <a href="./sobre.php">SOBRE</a>
+      <a href="./Inicio.html">INÍCIO</a>
+      <a href="./orcamento.html">ORÇAMENTO</a>
+      <a href="./contato.html">CONTATOS</a>
+      <a href="./sobre.html">SOBRE</a>
     </nav>
     <div class="logins" id="loginss" >
+      <dialog>
+        <form method="POST" id="form-login">
+          <h2>Login</h2>
+          <input type="email" name="email" id="email" placeholder="Email" required>
+          <input type="password" name="senha" id="senha" placeholder="Senha" required>
+          <button type="submit">Entrar</button>
+        </form>
+        <button id="fechar">Fechar</button>
+      </dialog>
       <button class="login">LOGIN</button>
-
+      
       <button class = "cadrasto">CADASTRA-SE</button>
     </div>
+   
 
     
   </header>
@@ -72,6 +82,7 @@
   <script src="../js/noticias.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/logado.js"></script>
+  <script src="../js/api.js"></script>
 
 
   

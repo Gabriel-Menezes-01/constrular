@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 30/04/2025 às 12:17
+-- Tempo de geração: 14/05/2025 às 22:24
 -- Versão do servidor: 9.1.0
--- Versão do PHP: 8.4.0
+-- Versão do PHP: 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,15 +35,16 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `email` varchar(200) NOT NULL,
   `senha` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Despejando dados para a tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `apelido`, `email`, `senha`) VALUES
-(1, 'gabriel', 'menezes ', 'gabriel@gmail.com', '123'),
-(5, 'julho', 'siva', 'gabriel22@gmail.com', '$2y$12$48DI0gdfe7167VdWkTr3HOt7.X6ONvVhplJ6QE//VqlcScJri4Vmu');
+(2, 'gabriel', 'menezes ', 'gabriel@gmail.com', '123'),
+(3, 'raiane', 'menezes', 'ray@gmail.com', '123'),
+(1, 'contrular', 'Admin', 'admin@gmail.com', '123');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

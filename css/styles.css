@@ -15,7 +15,7 @@ header{
     width: 100vw;
     height: 12vh;
     background-color:transparent;
-    color: white;
+    color: rgb(255, 255, 255);
     display: flex;
     justify-content: space-around;
     text-align: center;

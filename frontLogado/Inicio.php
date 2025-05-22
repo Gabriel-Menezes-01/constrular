@@ -3,7 +3,7 @@ session_start();
 include '../backend/conexao.php';
 
 if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
-  header('Location: ../front/Inicio.php');
+  header('Location: ../front/Inicio.html');
   exit;
 }
 $email = $_SESSION['email'];
@@ -11,18 +11,14 @@ $email = $_SESSION['email'];
  
 
 // Consulta o usuário logado
-$query = "SELECT nome, apelido, email FROM usuario WHERE email = :email";
-$stmt = $conn->prepare($query);
-$stmt->bindParam(':email', $email);
-$stmt->execute();
-$resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-if ($resultado) {
+$query = "SELECT nome, apelido, email FROM usuarios WHERE email = '$email'";
+$result = mysqli_query($conn, $query);
+if ($resultado = mysqli_fetch_assoc($result)) {
   $nome = $resultado['nome'];
   $apelido = $resultado['apelido'];
   $email = $resultado['email'];
 } else {
-  
-  header('Location: ../front/Inicio.php');
+  header('Location: ../front/Inicio.html');
   exit;
 }
 
@@ -35,6 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['get_logged_email']) &
   exit;
 }
 ?>
+
+
+
 <script>
 
 function buscarEmailLogado(callback) {
@@ -84,7 +83,7 @@ buscarEmailLogado(function(email) {
 
   <!-- nav bar -->
   <header class="tod-cont">
-    <h1><a href="./Inicio.html">Constru<span class="lar">Lar</span></a>
+    <h1><a href="./Inicio.php">Constru<span class="lar">Lar</span></a>
     </h1>
     <nav>
       <a href="./Inicio.php">INÍCIO</a>
@@ -192,6 +191,7 @@ buscarEmailLogado(function(email) {
   <script src="../js/script.js"></script>
   <script src="../js/usuario.js"></script>
   <script src="../js/list.js"></script>
+  <script src="../js/api.js"></script>
   
 
 
