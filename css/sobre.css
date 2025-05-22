@@ -56,8 +56,9 @@ section .galeria{
   border: 1px solid white;
   object-fit: cover;
   transition: .2s linear ;
-  margin-left: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-left: 50px;
  
 }
 .galeria .gallery .gallery-item:hover{
