@@ -1,0 +1,74 @@
+.conteudo-contatos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100vw;
+    gap: 20px;
+    
+
+  }
+  .conteudo-contatos .contatos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #00000079;
+    color: #fff;
+    width: 60%;
+    height: 70%;
+    margin: 0 20px;
+    
+  }
+  
+  .conteudo-contatos .contatos .envio-contato{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    
+  }
+  .conteudo-contatos .contatos .envio-contato h3{
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .conteudo-contatos .contatos .envio-contato .input-contatos{
+    width: 80%;
+  }
+  .conteudo-contatos .contatos .envio-contato input{
+    width: 100%;
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    padding: 10px;
+    background-color: #86868679;
+    color: #fff;
+  }
+  .conteudo-contatos .contatos .envio-contato .input-button{
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    padding: 10px;
+    color: #fff;
+  }
+  .conteudo-contatos .contatos .envio-contato .input-button button{
+    border-radius: 10px;
+    border: none;
+    font-size: 1rem;
+    padding: 10px;
+    color: #fff;
+    background-color: #00000079;
+  }
+  .conteudo-contatos .contatos .envio-contato .input-button button:hover{
+    background-color: #ff0000;
+    cursor: pointer;
+  }
