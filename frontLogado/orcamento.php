@@ -1,32 +1,29 @@
 <?php
 session_start();
-include '../backend/conexao.php';
 
+include '../backend/conexao.php';
 if (!isset($_SESSION['email']) || !isset($_SESSION['senha'])) {
   header('Location: ../front/Inicio.php');
   exit;
 }
 $email = $_SESSION['email'];
 
- 
 
-// Consulta o usuário logado
-$query = "SELECT nome, apelido, email FROM usuario WHERE email = :email";
+
+$query = "SELECT nome, apelido, email FROM usuarios WHERE email = ?";
 $stmt = $conn->prepare($query);
-$stmt->bindParam(':email', $email);
+$stmt->bind_param("s", $email);
 $stmt->execute();
-$resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+$resultado = $stmt->get_result()->fetch_assoc();
+
 if ($resultado) {
   $nome = $resultado['nome'];
   $apelido = $resultado['apelido'];
   $email = $resultado['email'];
 } else {
-  
   header('Location: ../front/Inicio.php');
   exit;
 }
-
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['get_logged_email']) && $_POST['get_logged_email'] == '1') {
   header('Access-Control-Allow-Origin: *');
@@ -64,9 +61,6 @@ buscarEmailLogado(function(email) {
 });
 
 </script>
-
-
-
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -76,145 +70,147 @@ buscarEmailLogado(function(email) {
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/orcamento.css">
-  <link rel="stylesheet" href="../css/logado.css">
-  <link rel="stylesheet" href="../css/list.css">
-  <title>Orçamento</title>
+  <title>Orçamento - ConstruLar</title>
 </head>
 
-<body class="img-orcamento">
-  <header class="tod-cont">
-    <h1>
-      <h1><a href="./Inicio.html">Constru<span class="lar" >Lar</span</a></h1>
-    </h1>
-    <nav>
-      <a href="./Inicio.php" >INICIO</a>
-      <a href="./orcamento.php">ORÇAMENTO</a>
-      <a href="./contato.php">CONTATOS</a>
-      <a href="./sobre.php">SOBRE</a>
-    </nav>
-    <button class="menu" id="menu">
-      <i class="bi bi-person-circle"></i>
-    </button>
+<body>
+  <!-- nav bar -->
+    <?php include('./header2.php'); ?>
 
-    <div class="nav__menu" id="nav-menu">
-      <ul class="nav__list">
-
-      <li class="nav__item">
-          <span class="list">
-            <?php
-              echo " $nome  $apelido";
-            ?>
-          </span>
-        </li>
-
-        <li class="nav__item">
-          <span class="list users" id="show-users" style="display: none;">
-            Ver Usuários
-          </span>
-        </li>
-
-        <div id="user-modal" class="modal" style="display: none;">
-          <div class="modal-content">
-            <span class="close-modal" id="close-modal">&times;</span>
-            <h2>Lista de Usuários</h2>
-            <ul id="user-list">
-              <?php
-              $userQuery = "SELECT nome, email FROM usuario";
-              $userStmt = $conn->prepare($userQuery);
-              $userStmt->execute();
-              $users = $userStmt->fetchAll(PDO::FETCH_ASSOC);
-
-              foreach ($users as $user) {
-          echo "<li>" . htmlspecialchars($user['nome']) . " - " . htmlspecialchars($user['email']) . "</li>";
-              }
-              ?>
-            </ul>
+  <section class="orcamento-section">
+    <div class="container">
+      <div class="orcamento-card">
+        <div class="card-header">
+          <h2><i class="bi bi-calculator"></i> Calcule seu Orçamento</h2>
+          <p>Descubra quanto custa realizar seu sonho</p>
+        </div>
+        
+        <form class="orcamento-form" id="orcamentoForm">
+          <div class="form-group">
+            <div class="input-wrapper">
+              <label for="nome"><i class="bi bi-person"></i> Nome Completo</label>
+              <input type="text" name="nome" id="nome" placeholder="Digite seu nome completo" required>
+              <span class="input-focus"></span>
+            </div>
+            
+            <div class="input-wrapper">
+              <label for="telefone"><i class="bi bi-telephone"></i> Telefone</label>
+              <input type="tel" name="telefone" id="telefone" placeholder="+351 999 999 999" required>
+              <span class="input-focus"></span>
+            </div>
           </div>
-        </div>
 
-        <li class="nav__item">
-          <span class="list" id="sair">Sair</span>
-
-        </li>
-      </ul>
-
-      <!-- Close button -->
-      <button class="nav__close" id="nav-close">
-        <i class="bi bi-x-circle"></i>
-      </button>
-
-    </div>
-
-  </header>
-
-
-  <section class="orcamento">
-    
-    <div class="dados">
-        
-        <div class="inputs"> 
-          <h2>Orçamento</h2>
-          
-            <div class="info">
-              <label for="name">Nome Completo</label>
-              <input type="text" name="name" id="nome">
-
-              <label for="telefone">Telefone</label>
-              <input type="tel" name="telefone" id="telefone">
+          <div class="form-group">
+            <div class="input-wrapper">
+              <label for="largura"><i class="bi bi-arrows-expand"></i> Largura do Terreno (m)</label>
+              <input type="number" name="largura" id="largura" placeholder="Ex: 10" min="1" step="0.1" required>
+              <span class="input-focus"></span>
             </div>
             
+            <div class="input-wrapper">
+              <label for="comprimento"><i class="bi bi-arrows-expand"></i> Comprimento do Terreno (m)</label>
+              <input type="number" name="comprimento" id="comprimento" placeholder="Ex: 20" min="1" step="0.1" required>
+              <span class="input-focus"></span>
+            </div>
+          </div>
 
-            <div class="info">
-              <label for="largura">Largura Terreno</label>
-              <input type="text" name="largura" id="largura">
+          <div class="form-group">
+            <div class="input-wrapper">
+              <label for="tipo-construcao"><i class="bi bi-house"></i> Tipo de Construção</label>
+              <select name="tipo-construcao" id="tipo-construcao" required>
+                <option value="">Selecione o tipo</option>
+                <option value="residencial">Casa Residencial</option>
+                <option value="comercial">Estabelecimento Comercial</option>
+                <option value="apartamento">Apartamento</option>
+                <option value="sobrado">Sobrado</option>
+              </select>
+              <span class="input-focus"></span>
+            </div>
+            
+            <div class="input-wrapper">
+              <label for="acabamento"><i class="bi bi-palette"></i> Padrão de Acabamento</label>
+              <select name="acabamento" id="acabamento" required>
+                <option value="">Selecione o padrão</option>
+                <option value="basico">Básico (R$ 1.200/m²)</option>
+                <option value="medio">Médio (R$ 1.500/m²)</option>
+                <option value="alto">Alto (R$ 2.000/m²)</option>
+                <option value="luxo">Luxo (R$ 2.800/m²)</option>
+              </select>
+              <span class="input-focus"></span>
+            </div>
+          </div>
+
+          <div class="error-message" id="errorMessage">
+            <i class="bi bi-exclamation-triangle"></i>
+            <span>Por favor, preencha todos os campos corretamente</span>
+          </div>
+
+          <button type="submit" class="btn-calcular">
+            <i class="bi bi-calculator"></i>
+            <span>Calcular Orçamento</span>
+            <div class="btn-loading">
+              <i class="bi bi-arrow-repeat"></i>
+            </div>
+          </button>
+
+          <div class="result-section" id="resultSection">
+            <div class="result-card">
+              <h3><i class="bi bi-graph-up"></i> Resultado do Orçamento</h3>
+              <div class="result-details">
+                <div class="detail-item">
+                  <span class="label">Área Total:</span>
+                  <span class="value" id="areaTotal">-</span>
+                </div>
+                <div class="detail-item">
+                  <span class="label">Tipo:</span>
+                  <span class="value" id="tipoResult">-</span>
+                </div>
+                <div class="detail-item">
+                  <span class="label">Padrão:</span>
+                  <span class="value" id="padraoResult">-</span>
+                </div>
+                <div class="detail-item total">
+                  <span class="label">Valor Estimado:</span>
+                  <span class="value" id="valorTotal">R$ 0,00</span>
+                </div>
+              </div>
               
-              <label for="comprimento">Comprimento Terreno</label>
-              <input type="text" name="comrpimento" id="comprimento">
+              <div class="action-buttons">
+                <button type="button" class="btn-whatsapp" id="btnWhatsapp">
+                  <i class="bi bi-whatsapp"></i>
+                  Enviar via WhatsApp
+                </button>
+                <button type="button" class="btn-pdf" id="btnPdf">
+                  <i class="bi bi-file-pdf"></i>
+                  Baixar PDF
+                </button>
+              </div>
             </div>
-            <div class="val">
-              <span>Por favor, preencha todos os campos com valores válidos</span>
+          </div>
+
+          <div class="observacao">
+            <div class="obs-icon">
+              <i class="bi bi-info-circle"></i>
             </div>
-            
-            <button class="btn-resultado">Calcular</button>
-            <p class="valor">Valor de 350€ por m2.</p> 
-        
-            <div class="result"></div>
-            <div class="obs">
-          <p>Observação:O valor apresentado neste orçamento não representa o custo total da obra. Os materiais de construção não estão inclusos nesta estimativa inicial.</p>
-        </div>
-        </div>
-        
-        
+            <div class="obs-content">
+              <h4>Observação Importante</h4>
+              <p>O valor apresentado é uma estimativa inicial baseada na área e padrão selecionado. O orçamento final pode variar conforme especificações do projeto, materiais escolhidos e condições do terreno. Entre em contato para uma avaliação detalhada.</p>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
-    
-    
   </section>
 
-
-
-
-
-
-
-  <footer>
-    <div class="conteudo-footer">
-      <h2>
-        Constru<span class="lar">Lar</span>
-      </h2>
-      <div class="items-contatos">
-        <i class="bi bi-facebook"> ConstruLar</i>
-        <i class="bi bi-instagram"> @ConstruLar_oficial</i>
-        <i class="bi bi-telephone"> 123 456 789</i>
-        <i class="bi bi-envelope"> construla@gmail.com</i>
-      </div>
-      <div></div>
-  </footer>
+  <!-- footer -->
+  <?php include('../front/footer.php'); ?>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="../js/script.js"></script>
+  <script src="../js/orcamento.js"></script>
   <script src="../js/usuario.js"></script>
-  <script src="../js/list.js"></script>
-  <script src="../admin/autorizacao.js"></script>
+  <script src="../js/logado.js"></script>
+
 </body>
 
 </html>

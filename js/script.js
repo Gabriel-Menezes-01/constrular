@@ -8,33 +8,7 @@ $(document).on('scroll', function () {
     }
 });
 
-// orçamento
-$('.btn-resultado').on('click', function () {
-    const $length = parseFloat($('#largura').val());
-    const $width = parseFloat($('#comprimento').val());
-    const $nome = $('#nome').val().trim();
-    const $validar = $('.val');
 
-    // Verifica se os campos estão preenchidos
-    if (
-        isNaN($length) ||
-        isNaN($width) ||
-        $nome === "" 
-    ) {
-        $validar.css('display', 'block');
-        return;
-    }
-
-    // Faz o cálculo
-    const area = $length * $width + 450;
-
-    // Exibe a resposta
-    const $resultDiv = $('.result');
-    $resultDiv.css({ display: 'block' });
-    $resultDiv.html(
-        `Resultado:<br>Caro cliente ${$nome}, o valor do orçamento da construção fica em torno de ${area.toFixed(2)}€`
-    );
-});
 
 
 // sobre

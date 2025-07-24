@@ -43,8 +43,8 @@
             </div>
             
             <button type="submit" name="cadrasto" class="btn-cadrasto" id="entre" >CADRASTA-SE</button>
-            <p class="p">Já tem uma conta? <a href="./login.php" class="a">Entre</a></p>
-            <p><a href="../front/Inicio.php" class="a">Volta para Inicio</a></p>
+            <p class="p">Já tem uma conta? <a href="./login.php">Entre</a></p>
+            <p><a href="../front/Inicio.php" class="a">← Voltar para Início</a></p>
 
         </form>
     </section>

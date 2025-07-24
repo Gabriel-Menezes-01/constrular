@@ -7,27 +7,25 @@ if (isset($_POST['cadrasto'])) {
         $nome = $_POST['nome'];
         $apelido = $_POST['apelido'];
         $email = $_POST['email'];
-        $senha =$_POST['senha'];
+        $senha = $_POST['senha'];
 
-        try {
-            $sql = "INSERT INTO usuario (nome, apelido, email, senha) VALUES (:nome, :apelido, :email, :senha)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':nome', $nome);
-            $stmt->bindParam(':apelido', $apelido);
-            $stmt->bindParam(':email', $email);
-            $stmt->bindParam(':senha', $senha);
-
-            $stmt->execute();
+        $sql = "INSERT INTO usuarios (nome, apelido, email, senha) VALUES ('$nome', '$apelido', '$email', '$senha')";
+        if (mysqli_query($conn, $sql)) {
+            // Cadastra o email na tabela de projetos
+            
+            
 
             // Login automático após cadastro
+            $_SESSION['usuario_id'] = mysqli_insert_id($conn);
+            $_SESSION['nome'] = $nome;
             $_SESSION['email'] = $email;
             $_SESSION['senha'] = $senha;
             header('Location: ../frontLogado/Inicio.php');
             exit();
-        } catch (PDOException $e) {
-            echo "Erro ao salvar os dados: " . $e->getMessage();
+        } else {
+            echo "Erro ao salvar os dados: " . mysqli_error($conn);
         }
-    } 
+    }
 }
 
 ?>

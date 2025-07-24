@@ -1,20 +1,21 @@
-
-section{
+section {
     width: 100vw;
-    height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.344), rgba(0, 0, 0,013)), url("../img/img3.jpeg");
+    height: 220vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.344), rgba(0, 0, 0, 013)),
+        url("../img/img3.jpeg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed; 
-  }
-  section .contatos{
+    background-attachment: fixed;
+}
+
+section .contatos {
     width: 100vw;
     height: 100vh;
     padding-top: 110px;
-    
-  }
-  section .envio-contato {
+}
+
+section .envio-contato {
     width: 90vw;
     height: 80vh;
     display: flex;
@@ -27,19 +28,22 @@ section{
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
     margin: auto;
 }
- section form h3{
+
+section form h3 {
     font-size: 30px;
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     margin-bottom: 20px;
- } 
- section form{
+}
+
+section form {
     display: flex;
     flex-direction: column;
-    margin: 10px ;
+    margin: 10px;
     margin-bottom: 30px;
- }
- section input{
+}
+
+section input {
     width: 90%;
     height: 40px;
     font-size: 16px;
@@ -48,31 +52,34 @@ section{
     border: 2px solid rgba(255, 255, 255, 0.9);
     border-radius: 30px;
     outline: none;
- } 
- section label{
+}
+
+section label {
     position: relative;
     letter-spacing: 3px;
     font-size: 13px;
     border-radius: 30px;
     color: white;
-    padding:0px 2px;
+    padding: 0px 2px;
     pointer-events: none;
     top: 7px;
     background-color: white;
     color: black;
     margin-left: 15px;
-    
 }
-section i{
+
+section i {
     position: relative;
     right: 45px;
     font-size: 20px;
 }
-section .input-button{
+
+section .input-button {
     text-align: end;
     margin-right: 45px;
 }
-section .input-button button{
+
+section .input-button button {
     width: 20%;
     height: 40px;
     background-color: #ececec;
@@ -81,15 +88,402 @@ section .input-button button{
     border: none;
     border-radius: 30px;
     cursor: pointer;
-    transition: .5s; 
+    transition: 0.5s;
     margin: 10px;
 }
-section .input-button button:hover{
+
+section .input-button button:hover {
     color: red;
 }
 
-h2 .lar{
-    color: #DB0000;
+h2 .lar {
+    color: #db0000;
     font-size: 1.2em;
 }
-  
+
+.contato-section {
+    min-height: 100vh;
+    background: linear-gradient(135deg,
+            rgba(255, 107, 107, 0.9),
+            rgba(103, 126, 234, 0.8)),
+        url("../img/img3.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 100px 0 60px;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.contato-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.contato-header h2 {
+    font-size: 3em;
+    color: white;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.contato-header p {
+    font-size: 1.3em;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.contato-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Formulário */
+.form-container {
+    width: 100%;
+}
+
+.form-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.form-header {
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    padding: 30px;
+    text-align: center;
+    color: white;
+}
+
+.form-header h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.form-header p {
+    opacity: 0.9;
+    margin: 0;
+}
+
+.contato-form {
+    padding: 40px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper label {
+    display: block;
+    font-size: 1em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-wrapper input,
+.input-wrapper select,
+.input-wrapper textarea {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1em;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    background: white;
+    color: #333;
+    transition: all 0.3s ease;
+    outline: none;
+    resize: vertical;
+}
+
+.input-wrapper input:focus,
+.input-wrapper select:focus,
+.input-wrapper textarea:focus {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
+    transform: translateY(-2px);
+}
+
+.input-wrapper .input-focus {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+    transition: width 0.3s ease;
+}
+
+.input-wrapper input:focus+.input-focus,
+.input-wrapper select:focus+.input-focus,
+.input-wrapper textarea:focus+.input-focus {
+    width: 100%;
+}
+
+.form-actions {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-enviar {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-enviar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+}
+
+.btn-enviar.loading {
+    pointer-events: none;
+}
+
+.btn-loading {
+    display: none;
+}
+
+.btn-enviar.loading .btn-loading {
+    display: block;
+    animation: spin 1s linear infinite;
+}
+
+.btn-enviar.loading span {
+    display: none;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.success-message {
+    background: rgba(39, 174, 96, 0.1);
+    border: 1px solid #27ae60;
+    border-radius: 10px;
+    padding: 15px;
+    color: #27ae60;
+    display: none;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Container de Informações */
+.info-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Mapa */
+.map-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.map-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.map-header h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1.3em;
+}
+
+.map-wrapper {
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+}
+
+.map-wrapper:hover iframe {
+    filter: grayscale(0%);
+}
+
+/* Cards de Contato */
+.contact-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+    width: 60px;
+    height: 50px;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3em;
+    flex-shrink: 0;
+    
+}
+.card-icon i {
+    left: 1px;
+}
+
+.card-content h4 {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.card-content p {
+    font-size: 1em;
+    color: #ff6b6b;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.card-content span {
+    font-size: 0.85em;
+    color: #666;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .contato-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .contato-section {
+        padding: 100px 10px 60px;
+    }
+
+    .contato-header h2 {
+        font-size: 2.2em;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .contato-form {
+        padding: 30px 20px;
+    }
+
+    .contact-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Animações */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-card,
+.map-container,
+.contact-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.success-message.show {
+    animation: fadeInUp 0.5s ease-out;
+}

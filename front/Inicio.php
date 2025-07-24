@@ -12,23 +12,7 @@
 
 <body>
 
-  <!-- nav bar -->
-  <header class="tod-cont">
-    <h1><a href="./Inicio.html">Constru<span class="lar" >Lar</span</a></h1>
-    <nav>
-      <a href="./Inicio.php">INÍCIO</a>
-      <a href="./orcamento.php">ORÇAMENTO</a>
-      <a href="./contato.php">CONTATOS</a>
-      <a href="./sobre.php">SOBRE</a>
-    </nav>
-    <div class="logins" id="loginss" >
-      <button class="login">LOGIN</button>
-
-      <button class = "cadrasto">CADASTRA-SE</button>
-    </div>
-
-    
-  </header>
+  <?php include('./header.php'); ?>
   
   <!-- imagem com texto -->
   <section class="conteudo">
@@ -42,7 +26,7 @@
           profissionais altamente qualificados está pronta para te ajudar a construir o futuro que você deseja.
         </p>
       </div>
-  </section>
+
 
   <!-- reels de noticias -->
   <aside class="noticias">
@@ -52,26 +36,24 @@
 
     </div>
   </aside>
+  </section>
 
+<!-- projetos -->
+<section class="projetos">
+  <
+  <div class="alert-login" style="margin-top: 30px; padding: 15px; background: #ffe5e5; border: 1px solid #ffb3b3; border-radius: 5px; color: #b30000;">
+    Para criar um projeto ou agendar uma visita com nossos engenheiros, é necessário fazer login.
+    <a href="../login/login.php" style="color: #b30000; text-decoration: underline; margin-left: 5px;">Clique aqui para acessar</a>
+  </div>
+</section>
   <!-- rodape -->
-  <footer>
-    <div class="conteudo-footer">
-      <h2>
-        Constru<span class="lar">Lar</span>
-      </h2>
-      <div class="items-contatos">
-        <i class="bi bi-facebook"> ConstruLar</i>
-        <i class="bi bi-instagram"> @ConstruLar_oficial</i>
-        <i class="bi bi-telephone"> 123 456 789</i>
-        <i class="bi bi-envelope"> construla@gmail.com</i>
-      </div>
-      <div></div>
-  </footer>
+  <?php include('./footer.php'); ?>
 
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="../js/noticias.js"></script>
   <script src="../js/script.js"></script>
   <script src="../js/logado.js"></script>
+  <script src="../js/footer.js"></script>
 
 
   

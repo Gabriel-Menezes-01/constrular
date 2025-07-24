@@ -1,17 +1,29 @@
 <?php
-$servidor = "localhost:3306";
-$usuario = "root";
-$senha = "";
-$banco = "constrular";
+// filepath: c:\wamp64\www\constrular\backend\conexao.php
 
- $conn = new PDO("mysql:host=$servidor;dbname=$banco", $usuario, $senha);
-// try {
-   
-//     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//     
-//     echo "Conexão bem-sucedida!";
-// } catch (PDOException $e) {
-//     echo "Erro na conexão: " . $e->getMessage();
-// }
-// 
+// Configurações do banco
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "constrular";
+
+try {
+    // Conectar ao MySQL
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    
+    // Verificar conexão
+    if (!$conn) {
+        throw new Exception("Falha na conexão: " . mysqli_connect_error());
+    }
+    
+    // Definir charset
+    mysqli_set_charset($conn, "utf8mb4");
+    
+    // Log de sucesso (apenas para debug)
+    error_log("Conexão com banco estabelecida com sucesso");
+    
+} catch (Exception $e) {
+    error_log("Erro na conexão com banco: " . $e->getMessage());
+    die("Erro de conexão com banco de dados");
+}
 ?>
